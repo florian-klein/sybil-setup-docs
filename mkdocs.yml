@@ -1,0 +1,21 @@
+site_name: Sybil Setup Documentation
+# navigation / routing
+nav:
+  - Home: index.md
+  - Getting Started:
+      - "General Information": "./getting_started/general_information.md"
+      - "Installing Sybil": "./getting_started/installation.md"
+      - "Using Sybil": "./getting_started/usage.md"
+  - Using Sybil as a local server:
+      - "Setup": "./sybil_local_server/setup.md"
+      - "Usage": "./sybil_local_server/usage.md"
+  - Using Sybil locally on one computer:
+      - "Setup": "./sybil_local_computer/setup.md"
+      - "Usage": "./sybil_local_computer/setup.md"
+  - Privacy:
+      - "General Information": "./privacy/general_information.md"
+      - "Assuring Privacy": "./privacy/assuring_privacy.md"
+      - "Frequently Asked Questions": "./privacy/faq.md"
+  - FAQ: faq.md
+# theme
+theme: material
