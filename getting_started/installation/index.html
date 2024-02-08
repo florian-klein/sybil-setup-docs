@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#requirements-and-installation" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -272,6 +277,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Installing Sybil
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -282,6 +300,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-download-and-install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download and install Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-download-sybij" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download Sybij
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verify-that-the-image-has-been-successfully-loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Verify that the image has been successfully loaded:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -632,6 +696,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-download-and-install-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download and install Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-download-sybij" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download Sybij
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-verify-that-the-image-has-been-successfully-loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Verify that the image has been successfully loaded:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -646,9 +747,77 @@
                   
 
 
-  <h1>Installing Sybil</h1>
-
-
+<h1 id="requirements-and-installation">Requirements and Installation</h1>
+<blockquote>
+<p>Note: Basic knowledge of command line is required.</p>
+</blockquote>
+<p>Software:</p>
+<ul>
+<li><a href="https://www.docker.com/">Docker</a></li>
+</ul>
+<p>Host System:</p>
+<ul>
+<li>
+<p>15GB storage</p>
+</li>
+<li>
+<p>8GB RAM</p>
+</li>
+<li>
+<p>Modern CPU</p>
+</li>
+</ul>
+<p>Installation Instructions:</p>
+<h3 id="1-download-and-install-docker">1. Download and install Docker</h3>
+<p>Alternatively, you can download [Docker Desktop]](https://www.docker.com/get-started) if you prefer a desktop GUI.</p>
+<h3 id="2-download-sybij">2. Download Sybij</h3>
+<p>For the Mac / Linux version run the following command:</p>
+<pre><code class="language-bash">docker pull mitjclinic/sybil
+</code></pre>
+<p>For the Windows Version run the following command:</p>
+<pre><code class="language-bash">docker pull mitjclinic/sybil:windows
+</code></pre>
+<h3 id="3-verify-that-the-image-has-been-successfully-loaded">3. Verify that the image has been successfully loaded:</h3>
+<p>To do this, run the following command:</p>
+<pre><code class="language-bash">docker image ls
+</code></pre>
+<h1 id="local-command-line-demo">Local Command Line Demo</h1>
+<p>The "sybil" container creates a server for an API. The API implements
+the endpoint "/dicom/files" to receive DICOM files through a HTTP POST
+request. The API will then return predictions with the server's
+response.</p>
+<p>Running the Server/Model:</p>
+<ol>
+<li>
+<p>Download and extract the <a href="https://www.dropbox.com/sh/addq480zyguxbbg/AACJRVsKDL0gpq-G9o3rfCBQa?dl=0">demo data</a>. <a href="https://drive.google.com/file/d/1aiwXn0cHIPzVS1eYwJDERijnYg94sIhH/view?usp=sharing">This folder</a> folder contains one LDCT from the publicly available LUNA16 dataset used as demo data, and a text file called sybil_run.txt that will allow you to process that particular example.</p>
+</li>
+<li>
+<p>Choose a [PORT] to expose, i.e., 5000. Run the docker image:</p>
+</li>
+</ol>
+<pre><code class="language-bash">docker run -p \[PORT\]:5000 mitjclinic/sybil:windows
+</code></pre>
+<p>You should see logging messages indicated that a server has been started.</p>
+<ul>
+<li>In the sybil_run.txt file, fill http://localhost:[PORT]/dicom/files with your chosen
+  port. Next, with the extracted folder "sybil_demo_data/" in the same
+  working directory, you can run the demo using the sybil_run.txt
+  file:</li>
+</ul>
+<pre><code class="language-bash">sh sybil_run.txt
+</code></pre>
+<p>The curl command may need to be installed with your package manager</p>
+<p>depending on your OS.</p>
+<p>Given that LDCTs usually are usually composed of dozens of DICOM
+images, we provide this text file that allows you to loop over all the
+images in a directory (example: sybil_demo_data or any other directory
+containing the images for a single patient) and send them to the API
+as one single request.</p>
+<p>Be sure to replace [PORT] in the sybil_run.txt file with your chosen
+port number.</p>
+<p><strong>Important Note</strong>: Each request to this endpoint should be the
+equivalent of a single exam.4. After a few minutes, you will receive a JSON response like so:</p>
+<p>On the hospital side, some program/script would need to be written to send files to the API and handle the JSON return object. This program ideally will be what interfaces with a database to grab the DICOM images and store the JSON predictions.</p>
 
 
 
