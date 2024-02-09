@@ -17,6 +17,7 @@ nav:
       - "Assuring Privacy": "./privacy/assuring_privacy.md"
       - "Frequently Asked Questions": "./privacy/faq.md"
   - FAQ: faq.md
+  - Further Readings: further_readings.md
 # theme
 theme: material
 # remove footer
